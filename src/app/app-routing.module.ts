@@ -1,10 +1,42 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { LoginPageComponent } from './Pages/login-page/login-page.component';
+import { DashboardComponent } from './Application/dashboard/dashboard.component';
+import { HeaderComponent } from './Application/header/header.component';
+import { PublicHeaderComponent } from './Application/public-header/public-header.component';
+import { FooterComponent } from './Application/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { authGuard } from './core/guards/auth.guard';
+const routes: Routes = [
+  {
+    path: '',
+    component: LoginPageComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'header',
+    component: HeaderComponent,
+  },
+  {
+    path: 'footer',
+    component: FooterComponent,
+  },
+  {
+    path: 'public-header',
+    component: PublicHeaderComponent,
+  },
+  {
+    path: '**',
+    component: LoginPageComponent,
+  },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [HttpClientModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
