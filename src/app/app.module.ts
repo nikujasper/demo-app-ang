@@ -13,6 +13,10 @@ import { HeaderComponent } from './Application/header/header.component';
 import { FooterComponent } from './Application/footer/footer.component';
 import { PublicHeaderComponent } from './Application/public-header/public-header.component';
 import { LoaderComponent } from './Application/loader/loader.component';
+import { AddCategoryComponent } from './Application/dashboard/add-category/add-category.component';
+import { SidebarComponent } from './Application/sidebar/sidebar.component';
+import { FlnComponent } from './Application/dashboard/fln/fln.component';
+import { AbhishekComponent } from './Application/dashboard/abhishek/abhishek.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,10 @@ import { LoaderComponent } from './Application/loader/loader.component';
     FooterComponent,
     PublicHeaderComponent,
     LoaderComponent,
+    SidebarComponent,
+    AddCategoryComponent,
+    FlnComponent,
+    AbhishekComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],

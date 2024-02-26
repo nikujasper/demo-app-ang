@@ -7,10 +7,27 @@ import { PublicHeaderComponent } from './Application/public-header/public-header
 import { FooterComponent } from './Application/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { authGuard } from './core/guards/auth.guard';
+import { AddCategoryComponent } from './Application/dashboard/add-category/add-category.component';
+import { FlnComponent } from './Application/dashboard/fln/fln.component';
+import { AbhishekComponent } from './Application/dashboard/abhishek/abhishek.component';
 const routes: Routes = [
   {
     path: '',
     component: LoginPageComponent,
+    // children: [
+    //   {
+    //     path: 'dashboard/AddCategory',
+    //     component: AddCategoryComponent,
+    //   },
+    //   {
+    //     path: 'dashboard/Fln',
+    //     component: FlnComponent,
+    //   },
+    //   {
+    //     path: 'dashboard/Abhishek',
+    //     component: AbhishekComponent,
+    //   },
+    // ],
   },
   {
     path: 'dashboard',
@@ -28,6 +45,21 @@ const routes: Routes = [
   {
     path: 'public-header',
     component: PublicHeaderComponent,
+  },
+  {
+    path: 'dashboard/AddCategory',
+    component: AddCategoryComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'dashboard/Fln',
+    component: FlnComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'dashboard/Abhishek',
+    component: AbhishekComponent,
+    canActivate: [authGuard],
   },
   {
     path: '**',

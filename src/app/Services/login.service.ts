@@ -38,17 +38,9 @@ export class LoginService {
     }
     return throwError(() => new Error(errorMessage));
   }
-
-  // validateLogin(inputData: any) {
-  //   var email = inputData.email;
-  //   var password = inputData.password;
-
-  //   return this.httpClient.get(`http://127.0.0.1:8000/api/user`);
-  // }
-
   login(param: any) {
     // console.log(param);
-    return this.httpClient.post(this.API + `/user`, param);
+    return this.httpClient.post(this.API + `/userLogin`, param);
   }
   linkMaster() {
     return this.httpClient.get(`http://127.0.0.1:8000/api/user`);

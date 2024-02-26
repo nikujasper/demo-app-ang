@@ -1,0 +1,33 @@
+<div class="p-3 bg-light">
+  <a
+    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+  >
+    <svg class="bi me-2" width="40" height="32">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-4">Menu</span>
+  </a>
+  <hr />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a routerLink="../" class="nav-link" aria-current="page">
+        <i class="bi bi-speedometer2"></i>
+        Dashboard
+      </a>
+    </li>
+    <div *ngIf="isLoading; else elseBlock">
+      <app-loader></app-loader>
+    </div>
+    <ng-template #elseBlock>
+      <ng-container *ngFor="let item of users; let i = index">
+        <li>
+          <a routerLink="../{{ item?.linkName }}" class="nav-link">
+            <i class="{{ item?.className }}"></i>
+            {{ item?.linkName }}
+          </a>
+        </li>
+      </ng-container>
+    </ng-template>
+  </ul>
+  <hr />
+</div>
