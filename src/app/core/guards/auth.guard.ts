@@ -5,7 +5,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   let _router = inject(Router);
   let accessToken!: any;
   if (typeof sessionStorage == 'undefined' || sessionStorage == null) {
-    console.log('false1');
+    // console.log('false1');
     return false;
   }
 

@@ -17,6 +17,7 @@ import { AddCategoryComponent } from './Application/dashboard/add-category/add-c
 import { SidebarComponent } from './Application/sidebar/sidebar.component';
 import { FlnComponent } from './Application/dashboard/fln/fln.component';
 import { AbhishekComponent } from './Application/dashboard/abhishek/abhishek.component';
+import { SchoolInspectionComponent } from './Application/school-inspection/school-inspection.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AbhishekComponent } from './Application/dashboard/abhishek/abhishek.com
     AddCategoryComponent,
     FlnComponent,
     AbhishekComponent,
+    SchoolInspectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],

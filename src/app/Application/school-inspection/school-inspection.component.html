@@ -1,0 +1,114 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <app-sidebar class="col-md-3 sidebar text-white"></app-sidebar>
+    <div class="col-md-9">
+      <h3 class="text-primary">School Inspection</h3>
+      <hr />
+      <form (ngSubmit)="storeInspection()">
+        <div>
+          <div class="row">
+            <div class="col-2 text-primary">
+              District <br />
+              <select
+                name="district"
+                id=""
+                class="form-select"
+                [(ngModel)]="district"
+                (change)="getBlock($event)"
+              >
+                <option value="">-SELECT-</option>
+                <option
+                  value="{{ item.districtId }}"
+                  *ngFor="let item of districtArr"
+                >
+                  {{ item.districtName }}
+                </option>
+              </select>
+            </div>
+            <div class="col-2 text-primary">
+              Block <br />
+              <select
+                name="block"
+                id=""
+                class="form-select"
+                [(ngModel)]="block"
+                (change)="getCluster($event)"
+              >
+                <option value="">-SELECT-</option>
+                <option
+                  value="{{ item.blockId }}"
+                  *ngFor="let item of blockArr"
+                >
+                  {{ item.blockName }}
+                </option>
+              </select>
+            </div>
+            <div class="col-2 text-primary">
+              Cluster <br />
+              <select
+                name="cluster"
+                id=""
+                class="form-select"
+                [(ngModel)]="cluster"
+                (change)="searchSchool($event)"
+              >
+                <option value="">-SELECT-</option>
+                <option
+                  value="{{ item.clusterId }}"
+                  *ngFor="let item of clusterArr"
+                >
+                  {{ item.clusterName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <hr />
+
+          <div class="row mt-3">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Select</th>
+                  <th>School</th>
+                  <th>Inspection</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of schoolArr; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      name="check"
+                      id="check{{ i }}"
+                      class="form-check-input"
+                      (change)="inspectionDetail(item.schoolId)"
+                    />
+                  </td>
+                  <td>{{ item?.schoolName }}</td>
+                  <td>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="school"
+                      id="input{{ item.schoolId }}"
+                      disabled
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

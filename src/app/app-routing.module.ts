@@ -10,6 +10,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { AddCategoryComponent } from './Application/dashboard/add-category/add-category.component';
 import { FlnComponent } from './Application/dashboard/fln/fln.component';
 import { AbhishekComponent } from './Application/dashboard/abhishek/abhishek.component';
+import { SchoolInspectionComponent } from './Application/school-inspection/school-inspection.component';
 const routes: Routes = [
   {
     path: '',
@@ -59,6 +60,11 @@ const routes: Routes = [
   {
     path: 'dashboard/Abhishek',
     component: AbhishekComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'dashboard/school-inspection',
+    component: SchoolInspectionComponent,
     canActivate: [authGuard],
   },
   {
