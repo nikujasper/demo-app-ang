@@ -93,18 +93,19 @@
                       type="text"
                       class="form-control"
                       name="school"
+                      placeholder="0"
                       id="input{{ item.schoolId }}"
                       disabled
                     />
                   </td>
                 </tr>
-                <tr>
-                  <td colspan="4">
-                    <button class="btn btn-primary" type="submit">Save</button>
-                  </td>
-                </tr>
               </tbody>
             </table>
+            <div colspan="4" *ngIf="schoolArr">
+              <button class="btn btn-success" type="submit">
+                Save / जमा करे
+              </button>
+            </div>
           </div>
         </div>
       </form>

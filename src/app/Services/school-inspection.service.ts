@@ -16,7 +16,17 @@ export class SchoolInspectionService {
   getCluster(data: any) {
     return this.httpClient.get(`http://127.0.0.1:8000/api/getCluster/${data}`);
   }
+  // getSchool(data: any) {
+  //   return this.httpClient.post(`http://127.0.0.1:8000/api/getSchool`, data);
+  // }
   getSchool(data: any) {
     return this.httpClient.get(`http://127.0.0.1:8000/api/getSchool/${data}`);
+  }
+
+  submitInspection(data: any) {
+    return this.httpClient.post(
+      'http://127.0.0.1:8000/api/storeInspection',
+      data
+    );
   }
 }

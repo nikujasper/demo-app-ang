@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SchoolInspectionService } from '../../Services/school-inspection.service';
 import { isEmpty } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-school-inspection',
@@ -17,6 +18,7 @@ export class SchoolInspectionComponent {
   blockArr: any;
   clusterArr: any;
   schoolArr: any;
+  emptyForm: boolean = false;
 
   constructor(private SchoolInspectionComponent: SchoolInspectionService) {}
 
@@ -33,6 +35,7 @@ export class SchoolInspectionComponent {
   }
   getBlock(event: any) {
     this.block = '';
+    this.cluster = '';
     // console.log(event.target.value);
     let districtId = event.target.value;
     this.SchoolInspectionComponent.getBlock(districtId).subscribe(
@@ -71,10 +74,8 @@ export class SchoolInspectionComponent {
     }
   }
   storeInspection() {
-    console.log(this.schoolArr);
-
     let checkedSchoolIds: any[] = []; // Array to store data of checked schools
-    let emptyForm = false; // Flag to track if any form is empty
+    // const emptyForm = false; // Flag to track if any form is empty
 
     // Loop through each school in the schoolArr array
     this.schoolArr.forEach((item: any, index: any) => {
@@ -87,16 +88,13 @@ export class SchoolInspectionComponent {
 
       // Check if the checkbox for this school is checked
       if (checkbox.checked) {
-        const inspectionValue = inputbox.value.trim(); // Get the value of the input field and trim whitespace
-
-        // Check if the inspectionValue is empty
+        const inspectionValue = inputbox.value.trim();
         if (inspectionValue === '') {
-          emptyForm = true; // Set the emptyForm flag to true
-          return; // Exit the loop
-        }
-
-        // If inspectionValue is not empty, create an object with relevant data
-        else {
+          this.emptyForm = true;
+          return;
+        } else {
+          this.emptyForm = false;
+          // If inspectionValue is not empty, create an object with relevant data
           const rowData = {
             district: this.district,
             block: this.block,
@@ -107,13 +105,35 @@ export class SchoolInspectionComponent {
           checkedSchoolIds.push(rowData); // Push the object to the checkedSchoolIds array
         }
       }
+      // else {
+      //   this.emptyForm = true;
+      // }
     });
 
     // Check if any form was found empty
-    if (emptyForm) {
-      alert('Fill Inspection..!!'); // Show alert if any form is empty
+    if (this.emptyForm) {
+      // alert('Fill Inspection..!!');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Fill Inspection..!!',
+      });
     } else {
-      console.log(checkedSchoolIds); // Log the form data in array if no empty form is found
+      this.SchoolInspectionComponent.submitInspection(
+        checkedSchoolIds
+      ).subscribe((res: any) => {
+        if (res) {
+          // alert('Data Saved..!!');
+          Swal.fire({
+            title: 'Success!',
+            text: 'Data Saved..!!',
+            icon: 'success',
+          });
+          // console.log(res);
+
+          window.location.reload();
+        }
+      });
     }
   }
 }
