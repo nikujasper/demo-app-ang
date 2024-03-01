@@ -15,7 +15,7 @@
         Dashboard
       </a>
     </li>
-    <div *ngIf="isLoading; else elseBlock">
+    <div *ngIf="isLoading; else elseBlock" class="text-center">
       <app-loader></app-loader>
     </div>
     <ng-template #elseBlock>

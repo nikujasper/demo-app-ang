@@ -18,6 +18,7 @@ import { SidebarComponent } from './Application/sidebar/sidebar.component';
 import { FlnComponent } from './Application/dashboard/fln/fln.component';
 import { AbhishekComponent } from './Application/dashboard/abhishek/abhishek.component';
 import { SchoolInspectionComponent } from './Application/school-inspection/school-inspection.component';
+import { LoadScreenComponent } from './Application/load-screen/load-screen.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SchoolInspectionComponent } from './Application/school-inspection/schoo
     FlnComponent,
     AbhishekComponent,
     SchoolInspectionComponent,
+    LoadScreenComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],

@@ -11,6 +11,7 @@ import { AddCategoryComponent } from './Application/dashboard/add-category/add-c
 import { FlnComponent } from './Application/dashboard/fln/fln.component';
 import { AbhishekComponent } from './Application/dashboard/abhishek/abhishek.component';
 import { SchoolInspectionComponent } from './Application/school-inspection/school-inspection.component';
+import { LoadScreenComponent } from './Application/load-screen/load-screen.component';
 const routes: Routes = [
   {
     path: '',
@@ -66,6 +67,10 @@ const routes: Routes = [
     path: 'dashboard/school-inspection',
     component: SchoolInspectionComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'load-screen',
+    component: LoadScreenComponent,
   },
   {
     path: '**',

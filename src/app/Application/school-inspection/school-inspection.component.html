@@ -76,33 +76,38 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of schoolArr; let i = index">
-                  <td>{{ i + 1 }}</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      name="check"
-                      id="check{{ i }}"
-                      class="form-check-input"
-                      (change)="inspectionDetail(item.schoolId)"
-                    />
-                  </td>
-                  <td>{{ item?.schoolName }}</td>
-                  <td>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="school"
-                      placeholder="0"
-                      id="input{{ item.schoolId }}"
-                      disabled
-                    />
-                  </td>
-                </tr>
+                <div *ngIf="isLoading; else elseBlock">
+                  <app-load-screen></app-load-screen>
+                </div>
+                <ng-template #elseBlock>
+                  <tr *ngFor="let item of schoolArr; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        name="check"
+                        id="check{{ i }}"
+                        class="form-check-input"
+                        (change)="inspectionDetail(item.schoolId)"
+                      />
+                    </td>
+                    <td>{{ item?.schoolName }}</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="school"
+                        placeholder="0"
+                        id="input{{ item.schoolId }}"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </ng-template>
               </tbody>
             </table>
             <div colspan="4" *ngIf="schoolArr">
-              <button class="btn btn-success" type="submit">
+              <button class="btn btn-primary" type="submit">
                 Save / जमा करे
               </button>
             </div>

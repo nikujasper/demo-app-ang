@@ -19,6 +19,7 @@ export class SchoolInspectionComponent {
   clusterArr: any;
   schoolArr: any;
   emptyForm: boolean = false;
+  isLoading: boolean = false;
 
   constructor(private SchoolInspectionComponent: SchoolInspectionService) {}
 
@@ -38,29 +39,40 @@ export class SchoolInspectionComponent {
     this.cluster = '';
     // console.log(event.target.value);
     let districtId = event.target.value;
-    this.SchoolInspectionComponent.getBlock(districtId).subscribe(
-      (res: any) => {
-        // console.log(res);
-        this.blockArr = res;
-      }
-    );
+    let inputData = {
+      id: districtId,
+    };
+    this.SchoolInspectionComponent.getBlock(inputData).subscribe((res: any) => {
+      // console.log(res);
+      this.blockArr = res;
+    });
   }
   getCluster(event: any) {
     this.cluster = '';
-    // console.log(event.target.value);
     let blockId = event.target.value;
-    this.SchoolInspectionComponent.getCluster(blockId).subscribe((res: any) => {
-      // console.log(res);
-      this.clusterArr = res;
-    });
+
+    var inputdata = {
+      id: blockId,
+    };
+    // console.log(event.target.value);
+    this.SchoolInspectionComponent.getCluster(inputdata).subscribe(
+      (res: any) => {
+        // console.log(res);
+        this.clusterArr = res;
+      }
+    );
   }
   searchSchool(event: any) {
     let clusterId = event.target.value;
-    // console.log(clusterId);
-    this.SchoolInspectionComponent.getSchool(clusterId).subscribe(
+    var inputData = {
+      id: clusterId,
+    };
+    this.isLoading = true;
+    this.SchoolInspectionComponent.getSchool(inputData).subscribe(
       (res: any) => {
         // console.log(res);
         this.schoolArr = res;
+        this.isLoading = false;
       }
     );
   }
