@@ -88,8 +88,8 @@ export class SchoolInspectionComponent {
   storeInspection() {
     let checkedSchoolIds: any[] = []; // Array to store data of checked schools
     // const emptyForm = false; // Flag to track if any form is empty
-
     // Loop through each school in the schoolArr array
+    let count = 0;
     this.schoolArr.forEach((item: any, index: any) => {
       const checkbox = document.getElementById(
         'check' + index
@@ -100,6 +100,7 @@ export class SchoolInspectionComponent {
 
       // Check if the checkbox for this school is checked
       if (checkbox.checked) {
+        count = count + 1;
         const inspectionValue = inputbox.value.trim();
         if (inspectionValue === '') {
           this.emptyForm = true;
@@ -116,6 +117,9 @@ export class SchoolInspectionComponent {
           };
           checkedSchoolIds.push(rowData); // Push the object to the checkedSchoolIds array
         }
+      }
+      if (count < 1) {
+        this.emptyForm = true;
       }
       // else {
       //   this.emptyForm = true;
