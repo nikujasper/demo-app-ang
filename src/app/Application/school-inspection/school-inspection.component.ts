@@ -100,7 +100,7 @@ export class SchoolInspectionComponent {
 
       // Check if the checkbox for this school is checked
       if (checkbox.checked) {
-        count = count + 1;
+        count = count + 1; //to count the number of checked boxes
         const inspectionValue = inputbox.value.trim();
         if (inspectionValue === '') {
           this.emptyForm = true;
@@ -118,6 +118,7 @@ export class SchoolInspectionComponent {
           checkedSchoolIds.push(rowData); // Push the object to the checkedSchoolIds array
         }
       }
+      //check that number of checked box is not zero.
       if (count < 1) {
         this.emptyForm = true;
       }
