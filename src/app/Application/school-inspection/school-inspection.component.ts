@@ -28,6 +28,8 @@ export class SchoolInspectionComponent {
   }
 
   getDistrict() {
+    // this.cluster = '';
+
     this.SchoolInspectionComponent.getDistrict().subscribe((res: any) => {
       // console.log(res);
       this.districtArr = res;
