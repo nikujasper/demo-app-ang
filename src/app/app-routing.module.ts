@@ -16,38 +16,24 @@ const routes: Routes = [
   {
     path: '',
     component: LoginPageComponent,
-    // children: [
-    //   {
-    //     path: 'dashboard/AddCategory',
-    //     component: AddCategoryComponent,
-    //   },
-    //   {
-    //     path: 'dashboard/Fln',
-    //     component: FlnComponent,
-    //   },
-    //   {
-    //     path: 'dashboard/Abhishek',
-    //     component: AbhishekComponent,
-    //   },
-    // ],
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [authGuard],
   },
-  {
-    path: 'header',
-    component: HeaderComponent,
-  },
-  {
-    path: 'footer',
-    component: FooterComponent,
-  },
-  {
-    path: 'public-header',
-    component: PublicHeaderComponent,
-  },
+  // {
+  //   path: 'header',
+  //   component: HeaderComponent,
+  // },
+  // {
+  //   path: 'footer',
+  //   component: FooterComponent,
+  // },
+  // {
+  //   path: 'public-header',
+  //   component: PublicHeaderComponent,
+  // },
   {
     path: 'dashboard/AddCategory',
     component: AddCategoryComponent,
@@ -68,10 +54,10 @@ const routes: Routes = [
     component: SchoolInspectionComponent,
     canActivate: [authGuard],
   },
-  {
-    path: 'load-screen',
-    component: LoadScreenComponent,
-  },
+  // {
+  //   path: 'load-screen',
+  //   component: LoadScreenComponent,
+  // },
   {
     path: '**',
     component: LoginPageComponent,
