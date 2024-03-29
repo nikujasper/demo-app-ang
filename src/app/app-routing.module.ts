@@ -54,10 +54,7 @@ const routes: Routes = [
     component: SchoolInspectionComponent,
     canActivate: [authGuard],
   },
-  // {
-  //   path: 'load-screen',
-  //   component: LoadScreenComponent,
-  // },
+
   {
     path: '**',
     component: LoginPageComponent,
